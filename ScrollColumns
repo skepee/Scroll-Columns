@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scroll Columns</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+<style>
+
+	.row div
+	{
+		border:	1px solid red;
+	}
+
+	.back,.forward
+	{
+		cursor: pointer;
+	}
+
+	.back
+	{
+		padding-right:5px;
+	}
+
+	.forward
+	{
+		padding-left:5px;
+	}
+
+	.select
+	{
+		text-decoration: underline;
+		font-weight: bold;
+	}
+
+	.header
+	{
+		font-weight: bold;
+	}
+
+	.container1
+	{
+		width: 1000px;
+	    overflow:auto;
+	}
+
+	.col-sm-1
+	{
+		max-width: 200px;
+	}
+
+	.selectRow
+	{
+		background-color: #f7d577;
+		border: 1px solid #bd8c06;
+
+	}
+
+	.sectionrow
+	{
+		width: 10000px;
+	}
+
+	.container1
+	{
+		padding: 20px;
+	}
+
+
+</style>
+
+
+<script>
+
+$(document).ready(function()
+{
+	var scrolled=0;
+	var back= $("<i class='back fas fa-arrow-alt-circle-left' title='scroll left'></i>");
+	var forward= $("<i class='forward fas fa-arrow-alt-circle-right' title='scroll right'></i>");
+
+	$(".row").hover(function(){
+		$(this).toggleClass("selectRow");
+	});
+
+	$(".col-sm-1").hover(function(){	
+
+		$(this).addClass("select");
+
+		if ($(this).children(".back").length==0 )
+			$(this).prepend(back);
+
+		if ($(this).children(".forward").length==0 )
+			$(this).append(forward);
+	});
+
+	$(".col-sm-1").mouseleave(function(){					
+		$(this).children(".back").remove();
+		$(this).children(".forward").remove();
+		$(this).removeClass("select");
+	});
+
+	$(document).on("click", ".back", function()
+	{
+		var len=$(this).parent().prev().outerWidth(true);
+		scrolled=$(".container1").scrollLeft();
+		scrolled=scrolled-len;        
+		$(".container1").animate({
+	    	scrollLeft:  scrolled
+		});
+
+	});
+
+	$(document).on("click", ".forward", function()
+	{
+		var len=$(this).parent().next().outerWidth(true);
+		scrolled=$(".container1").scrollLeft();
+		scrolled=scrolled+len;        
+		$(".container1").animate({
+			scrollLeft:  scrolled
+		});
+
+	});
+});
+
+
+</script>
+</head>
+
+<body>
+
+
+<div class="forward">Scroll columns</div>
+<br/>
+<div class="container1">
+	<div class="sectionrow">
+		<div class="row">
+			<div class="header col-sm-1">Header01</div>
+			<div class="header col-sm-1">Header02</div>
+			<div class="header col-sm-1">Header03</div>
+			<div class="header col-sm-1">Header04</div>
+			<div class="header col-sm-1">Header05</div>
+			<div class="header col-sm-1">Header06</div>
+			<div class="header col-sm-1">Header07</div>
+			<div class="header col-sm-1">Header08</div>
+			<div class="header col-sm-1">Header09</div>
+			<div class="header col-sm-1">Header10</div>
+			<div class="header col-sm-1">Header11</div>
+			<div class="header col-sm-1">Header12</div>
+			<div class="header col-sm-1">Header13</div>
+			<div class="header col-sm-1">Header14</div>
+			<div class="header col-sm-1">Header15</div>
+			<div class="header col-sm-1">Header16</div>
+			<div class="header col-sm-1">Header17</div>
+			<div class="header col-sm-1">Header18</div>
+			<div class="header col-sm-1">Header19</div>
+			<div class="header col-sm-1">Header20</div>
+			<div class="header col-sm-1">Header21</div>
+			<div class="header col-sm-1">Header22</div>
+			<div class="header col-sm-1">Header23</div>
+			<div class="header col-sm-1">Header24</div>
+			<div class="header col-sm-1">Header25</div>
+			<div class="header col-sm-1">Header26</div>
+			<div class="header col-sm-1">Header27</div>
+			<div class="header col-sm-1">Header28</div>
+			<div class="header col-sm-1">Header29</div>
+			<div class="header col-sm-1">Header30</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1">Test01</div>
+			<div class="col-sm-1">Test02</div>
+			<div class="col-sm-1">Test03</div>
+			<div class="col-sm-1">Test04</div>
+			<div class="col-sm-1">Test05</div>
+			<div class="col-sm-1">Test06</div>
+			<div class="col-sm-1">Test07</div>
+			<div class="col-sm-1">Test08</div>
+			<div class="col-sm-1">Test09</div>
+			<div class="col-sm-1">Test10</div>
+			<div class="col-sm-1">Test11</div>
+			<div class="col-sm-1">Test12</div>
+			<div class="col-sm-1">Test13</div>
+			<div class="col-sm-1">Test14</div>
+			<div class="col-sm-1">Test15</div>
+			<div class="col-sm-1">Test16</div>
+			<div class="col-sm-1">Test17</div>
+			<div class="col-sm-1">Test18</div>
+			<div class="col-sm-1">Test19</div>
+			<div class="col-sm-1">Test20</div>
+			<div class="col-sm-1">Test21</div>
+			<div class="col-sm-1">Test22</div>
+			<div class="col-sm-1">Test23</div>
+			<div class="col-sm-1">Test24</div>
+			<div class="col-sm-1">Test25</div>
+			<div class="col-sm-1">Test26</div>
+			<div class="col-sm-1">Test27</div>
+			<div class="col-sm-1">Test28</div>
+			<div class="col-sm-1">Test29</div>
+			<div class="col-sm-1">Test30</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1">Test01</div>
+			<div class="col-sm-1">Test02</div>
+			<div class="col-sm-1">Test03</div>
+			<div class="col-sm-1">Test04</div>
+			<div class="col-sm-1">Test05</div>
+			<div class="col-sm-1">Test06</div>
+			<div class="col-sm-1">Test07</div>
+			<div class="col-sm-1">Test08</div>
+			<div class="col-sm-1">Test09</div>
+			<div class="col-sm-1">Test10</div>
+			<div class="col-sm-1">Test11</div>
+			<div class="col-sm-1">Test12</div>
+			<div class="col-sm-1">Test13</div>
+			<div class="col-sm-1">Test14</div>
+			<div class="col-sm-1">Test15</div>
+			<div class="col-sm-1">Test16</div>
+			<div class="col-sm-1">Test17</div>
+			<div class="col-sm-1">Test18</div>
+			<div class="col-sm-1">Test19</div>
+			<div class="col-sm-1">Test20</div>
+			<div class="col-sm-1">Test21</div>
+			<div class="col-sm-1">Test22</div>
+			<div class="col-sm-1">Test23</div>
+			<div class="col-sm-1">Test24</div>
+			<div class="col-sm-1">Test25</div>
+			<div class="col-sm-1">Test26</div>
+			<div class="col-sm-1">Test27</div>
+			<div class="col-sm-1">Test28</div>
+			<div class="col-sm-1">Test29</div>
+			<div class="col-sm-1">Test30</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1">Test01</div>
+			<div class="col-sm-1">Test02</div>
+			<div class="col-sm-1">Test03</div>
+			<div class="col-sm-1">Test04</div>
+			<div class="col-sm-1">Test05</div>
+			<div class="col-sm-1">Test06</div>
+			<div class="col-sm-1">Test07</div>
+			<div class="col-sm-1">Test08</div>
+			<div class="col-sm-1">Test09</div>
+			<div class="col-sm-1">Test10</div>
+			<div class="col-sm-1">Test11</div>
+			<div class="col-sm-1">Test12</div>
+			<div class="col-sm-1">Test13</div>
+			<div class="col-sm-1">Test14</div>
+			<div class="col-sm-1">Test15</div>
+			<div class="col-sm-1">Test16</div>
+			<div class="col-sm-1">Test17</div>
+			<div class="col-sm-1">Test18</div>
+			<div class="col-sm-1">Test19</div>
+			<div class="col-sm-1">Test20</div>
+			<div class="col-sm-1">Test21</div>
+			<div class="col-sm-1">Test22</div>
+			<div class="col-sm-1">Test23</div>
+			<div class="col-sm-1">Test24</div>
+			<div class="col-sm-1">Test25</div>
+			<div class="col-sm-1">Test26</div>
+			<div class="col-sm-1">Test27</div>
+			<div class="col-sm-1">Test28</div>
+			<div class="col-sm-1">Test29</div>
+			<div class="col-sm-1">Test30</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1">Test01</div>
+			<div class="col-sm-1">Test02</div>
+			<div class="col-sm-1">Test03</div>
+			<div class="col-sm-1">Test04</div>
+			<div class="col-sm-1">Test05</div>
+			<div class="col-sm-1">Test06</div>
+			<div class="col-sm-1">Test07</div>
+			<div class="col-sm-1">Test08</div>
+			<div class="col-sm-1">Test09</div>
+			<div class="col-sm-1">Test10</div>
+			<div class="col-sm-1">Test11</div>
+			<div class="col-sm-1">Test12</div>
+			<div class="col-sm-1">Test13</div>
+			<div class="col-sm-1">Test14</div>
+			<div class="col-sm-1">Test15</div>
+			<div class="col-sm-1">Test16</div>
+			<div class="col-sm-1">Test17</div>
+			<div class="col-sm-1">Test18</div>
+			<div class="col-sm-1">Test19</div>
+			<div class="col-sm-1">Test20</div>
+			<div class="col-sm-1">Test21</div>
+			<div class="col-sm-1">Test22</div>
+			<div class="col-sm-1">Test23</div>
+			<div class="col-sm-1">Test24</div>
+			<div class="col-sm-1">Test25</div>
+			<div class="col-sm-1">Test26</div>
+			<div class="col-sm-1">Test27</div>
+			<div class="col-sm-1">Test28</div>
+			<div class="col-sm-1">Test29</div>
+			<div class="col-sm-1">Test30</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
