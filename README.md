@@ -9,6 +9,9 @@ Demo: https://codepen.io/skepee/pen/xMqYRx
 
 
 
+
+
+
 # Scroll - Columns - Highlight row and column
 This version highlights the entire column and row of the selected element. Also navigation is showed.
 When you can scroll with focus on the header, the entire column is highlighted.
