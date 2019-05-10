@@ -6,7 +6,7 @@ It does not matter how long is the cell, it scrolls automatically in the exact p
 
 Basically we will consider two events on the generic cell of the grid:
 * hover(), when the mouse points on the cell
-* mouseleave(), when the mouse leave the cell
+* mouseleave(), when the mouse leaves the cell
 
 and also the click event on the two buttons of the cell, left and right arrows.
 
